@@ -86,6 +86,12 @@ def main():
         key=lambda a: (priority.index(a["agent_status"]), a.get("terminal_id", "")),
     )
     if not ranked:
+        # Best-effort toast so an empty queue is distinguishable from a broken keybinding.
+        subprocess.run(
+            [herdr_bin(), "notification", "show", "No agent needs attention",
+             "--position", "top-right", "--sound", "none"],
+            capture_output=True, timeout=10,
+        )
         return
 
     target = ranked[0]

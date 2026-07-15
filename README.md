@@ -2,7 +2,7 @@
 
 A [Herdr](https://herdr.dev) plugin that jumps to the next agent needing attention.
 
-Unlike Herdr's built-in `next_agent` / `previous_agent` bindings, which cycle agents in panel order, this plugin ranks agents by how urgently they need you (blocked first, then finished-but-unseen, then idle by default) and focuses the top one. If the agent you are already looking at is itself in the ranked list, it jumps to the one after it, so pressing the shortcut repeatedly cycles through every agent that needs attention.
+Unlike Herdr's built-in `next_agent` / `previous_agent` bindings, which cycle agents in panel order, this plugin ranks agents by how urgently they need you (blocked first, then finished-but-unseen, then idle by default) and focuses the top one. If the agent you are already looking at is itself in the ranked list, it jumps to the one after it, so pressing the shortcut repeatedly cycles through every agent that needs attention. When no agent needs attention, a toast notification says so.
 
 ## Install
 
