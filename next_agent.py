@@ -87,9 +87,9 @@ def main():
     )
     if not ranked:
         # Best-effort toast so an empty queue is distinguishable from a broken keybinding.
+        # No --position: herdr places it per the user's [ui.toast.herdr] setting.
         subprocess.run(
-            [herdr_bin(), "notification", "show", "No agent needs attention",
-             "--position", "top-right", "--sound", "none"],
+            [herdr_bin(), "notification", "show", "No agent needs attention", "--sound", "none"],
             capture_output=True, timeout=10,
         )
         return
