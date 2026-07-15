@@ -1,4 +1,4 @@
-# Next Agent
+# Herdr Next Agent Plugin
 
 A [Herdr](https://herdr.dev) plugin that jumps to the next agent needing attention.
 
