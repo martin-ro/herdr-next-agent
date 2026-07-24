@@ -2,7 +2,7 @@ id = "martinro.next-agent"
 name = "Next Agent"
 version = "0.1.0"
 min_herdr_version = "0.7.0"
-platforms = ["linux"]
+platforms = ["linux", "macos"]
 
 [[actions]]
 id = "jump"
