@@ -6,16 +6,16 @@ import next_agent
 
 
 class NextAgentTest(unittest.TestCase):
-    def test_focus_uses_pane_ids_and_cycles_in_pane_order(self):
+    def test_focus_selects_the_agent_and_updates_the_client_tab(self):
         agents = [
-            {"pane_id": "w1:p2", "terminal_id": "term_a", "agent_status": "done"},
-            {"pane_id": "w1:p1", "terminal_id": "term_z", "agent_status": "done"},
+            {"pane_id": "w1:p2", "tab_id": "w1:t2", "terminal_id": "term_a", "agent_status": "done"},
+            {"pane_id": "w1:p1", "tab_id": "w1:t1", "terminal_id": "term_z", "agent_status": "done"},
         ]
 
-        for focused, expected in [
-            (None, "w1:p1"),
-            ("w1:p1", "w1:p2"),
-            ("w1:p2", "w1:p1"),
+        for focused, expected_pane, expected_tab in [
+            (None, "w1:p1", "w1:t1"),
+            ("w1:p1", "w1:p2", "w1:t2"),
+            ("w1:p2", "w1:p1", "w1:t1"),
         ]:
             with self.subTest(focused=focused):
                 for agent in agents:
@@ -30,7 +30,8 @@ class NextAgentTest(unittest.TestCase):
 
                 self.assertEqual(run_herdr.call_args_list, [
                     call("agent", "list"),
-                    call("agent", "focus", expected),
+                    call("agent", "focus", expected_pane),
+                    call("tab", "focus", expected_tab),
                 ])
 
 

@@ -101,6 +101,8 @@ def main():
             break
 
     run_herdr("agent", "focus", target["pane_id"])
+    # Herdr 0.9 does not update attached client tabs through agent focus.
+    run_herdr("tab", "focus", target["tab_id"])
 
 
 if __name__ == "__main__":
