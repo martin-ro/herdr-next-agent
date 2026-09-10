@@ -83,7 +83,7 @@ def main():
 
     ranked = sorted(
         (a for a in agents if a.get("agent_status") in priority),
-        key=lambda a: (priority.index(a["agent_status"]), a.get("terminal_id", "")),
+        key=lambda a: (priority.index(a["agent_status"]), a.get("pane_id", "")),
     )
     if not ranked:
         # Best-effort toast so an empty queue is distinguishable from a broken keybinding.
@@ -100,7 +100,7 @@ def main():
             target = ranked[(i + 1) % len(ranked)]
             break
 
-    run_herdr("agent", "focus", target["terminal_id"])
+    run_herdr("agent", "focus", target["pane_id"])
 
 
 if __name__ == "__main__":
